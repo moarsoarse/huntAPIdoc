@@ -8,7 +8,7 @@ info:
 servers:
   - url: 'http://localhost:3000'
 paths:
-  /tickets/issue:
+  /tickets:
     parameters: []
     post:
       summary: Заявка на охотбилет
@@ -33,7 +33,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/IssueTicket'
+              $ref: '#/components/schemas/TicketApplication'
+    get:
+      summary: ''
+      operationId: get-tickets
+      responses:
+        '200':
+          description: OK
+      x-stoplight:
+        id: yuaqqqesg7wwd
   '/tickets/{id}':
     parameters:
       - schema:
@@ -230,31 +238,21 @@ components:
             id: 1ppk516frrxgu
           format: uuid
           description: Кем выдан
-      required:
-        - id
-        - applicant
-        - issueDate
-        - series
-        - number
-    IssueTicket:
-      title: IssueTicket
+        applicanId:
+          type: string
+          x-stoplight:
+            id: s7bq5btp4s50z
+          format: uuid
+    TicketApplication:
+      title: TicketApplication
       x-stoplight:
         id: l4mqbijlbpsgh
       type: object
       properties:
         applicant:
+          $ref: '#/components/schemas/Hunter'
           x-stoplight:
             id: yv3gc3wjwvwsu
-          oneOf:
-            - type: string
-              x-stoplight:
-                id: ebbje7x9iwuet
-              format: uuid
-              description: ID физлица
-            - $ref: '#/components/schemas/Hunter'
-              x-stoplight:
-                id: j55x1gidpiqya
-              description: Анкета физ.лица
           description: Заявитель
         issuer:
           type: string
@@ -272,12 +270,15 @@ components:
             - епгу
             - мфц
             - эл. очередь
+        '':
+          type: string
+          x-stoplight:
+            id: fcmukmqwn6tmb
       required:
-        - applicant
         - issuer
         - source
-    CancelTicket:
-      title: CancelTicket
+    TicketAnnulation:
+      title: TicketAnnulation
       x-stoplight:
         id: r8h4dauwgejbn
       type: object
