@@ -1,0 +1,309 @@
+openapi: 3.1.0
+x-stoplight:
+  id: b5jf8q8ypnn00
+info:
+  title: Hunter
+  version: '1.0'
+  description: Методы для охотников
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /tickets/issue:
+    parameters: []
+    post:
+      summary: Заявка на охотбилет
+      operationId: post-ticket
+      responses:
+        '201':
+          description: Created
+          headers:
+            ticketId:
+              schema:
+                type: string
+              description: Идентификатор созданного билета
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      x-stoplight:
+        id: 18l6doir5l5ea
+      description: Подать заявление на выдачу охотничьего билета
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueTicket'
+  '/tickets/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Получить охотбилет по ID
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticket'
+      operationId: get-tickets-ticketId
+      x-stoplight:
+        id: nkv23tapfiv7c
+components:
+  schemas:
+    Hunter:
+      title: Hunter
+      x-stoplight:
+        id: p7nxpc4vy195r
+      type: object
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: 9o0uh69yek91u
+          format: uuid
+          readOnly: true
+        passportData:
+          $ref: '#/components/schemas/Passport'
+          x-stoplight:
+            id: g3jdtwed44nuz
+          description: Паспортные данные
+        photo:
+          type: string
+          x-stoplight:
+            id: 1tfln9lmw1pde
+          format: uuid
+          description: S3 storage id
+        homeDistrcit:
+          type: string
+          x-stoplight:
+            id: ikpkth6q4rcx2
+          format: uuid
+          description: ID района проживания
+        homeAddress:
+          x-stoplight:
+            id: m8yspvtk9zeg8
+          description: Адрес проживания
+          oneOf:
+            - x-stoplight:
+                id: j9tgofkta56lt
+              format: uuid
+              description: FIAS ID адреса проживания
+            - x-stoplight:
+                id: ob5m6qz3zgjgf
+              description: Адрес
+          type: string
+        phone:
+          type: string
+          x-stoplight:
+            id: xc03vtrgii37e
+          pattern: '^\s* (+7|8)|(+\d{1,4})(\d[\-\s]*{9})'
+          description: Номер телефона
+      required:
+        - passportData
+    Passport:
+      title: Passport
+      x-stoplight:
+        id: tmkf8sdqqdvqw
+      type: object
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: 3pwmk96mahle9
+          description: Имя
+        surname:
+          type: string
+          x-stoplight:
+            id: sboulp50icjl5
+          description: Фамилия
+        patronim:
+          type: string
+          x-stoplight:
+            id: zep95nkuagbbf
+          description: Отчество
+        birthDate:
+          type: string
+          x-stoplight:
+            id: avnhvuaxbfkun
+          format: date
+          description: Дата рождения
+        birthPlace:
+          type: string
+          x-stoplight:
+            id: dj3potewi2em8
+        passNo:
+          type: string
+          x-stoplight:
+            id: fnpt89sku0fae
+          pattern: '^\s*\d{{4}\s*\d{6}\s*$'
+          description: Серия и номер паспорта в формате **9999 999999**
+        issueDate:
+          type: string
+          x-stoplight:
+            id: oogabpkq1x15t
+          format: date
+          description: Дата выдачи
+        issueAuth:
+          x-stoplight:
+            id: xvzw1ehvg3s2e
+          anyOf:
+            - x-stoplight:
+                id: i2mges09cie61
+              minLength: 6
+              description: Наименование органа как в паспорте
+            - x-stoplight:
+                id: jihp5x7zerrg0
+              pattern: '^\s*\d{3}\-\d{3}\s*$'
+              description: Код подразделения
+          description: Кем выдан
+          type: string
+        citizenShip:
+          x-stoplight:
+            id: 4y3irpv91gfyc
+          anyOf:
+            - x-stoplight:
+                id: vo6gt5z7tot0s
+              minLength: 2
+              description: Наименование страны
+            - x-stoplight:
+                id: 847uubnajjqz6
+              format: uuid
+              description: Код страны
+          description: Гражданство
+          type: string
+        regAddress:
+          type: string
+          x-stoplight:
+            id: du4obn0v5i0oo
+          description: Адрес регистрации (FIAS ID)
+          format: uuid
+      required:
+        - name
+        - surname
+        - birthDate
+        - passNo
+        - issueDate
+        - issueAuth
+    Ticket:
+      title: Ticket
+      x-stoplight:
+        id: kmnq1am73ny2x
+      type: object
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: 8yt9ewqdax7gb
+          format: uuid
+        applicant:
+          $ref: '#/components/schemas/Hunter'
+          x-stoplight:
+            id: 7chm019b1jjjs
+          description: Владелец
+        issueDate:
+          type: string
+          x-stoplight:
+            id: 2rk0eyncy9r8i
+          format: date
+          description: Дата выдачи
+        series:
+          type: string
+          x-stoplight:
+            id: 3hbwc26nl83io
+          pattern: '^\d{2}$'
+          description: Серия
+        number:
+          type: string
+          x-stoplight:
+            id: 6d13rd7331o7n
+          pattern: '^\d{6}$'
+          description: Номер
+        issuer:
+          type: string
+          x-stoplight:
+            id: 1ppk516frrxgu
+          format: uuid
+          description: Кем выдан
+      required:
+        - id
+        - applicant
+        - issueDate
+        - series
+        - number
+    IssueTicket:
+      title: IssueTicket
+      x-stoplight:
+        id: l4mqbijlbpsgh
+      type: object
+      properties:
+        applicant:
+          x-stoplight:
+            id: yv3gc3wjwvwsu
+          oneOf:
+            - type: string
+              x-stoplight:
+                id: ebbje7x9iwuet
+              format: uuid
+              description: ID физлица
+            - $ref: '#/components/schemas/Hunter'
+              x-stoplight:
+                id: j55x1gidpiqya
+              description: Анкета физ.лица
+          description: Заявитель
+        issuer:
+          type: string
+          x-stoplight:
+            id: 0rtcmc18uox3r
+          format: uuid
+          description: Выдающий орган власти
+        source:
+          x-stoplight:
+            id: zkw8khmk8i44f
+          description: Источник заявления
+          enum:
+            - лично
+            - рпгу
+            - епгу
+            - мфц
+            - эл. очередь
+      required:
+        - applicant
+        - issuer
+        - source
+    CancelTicket:
+      title: CancelTicket
+      x-stoplight:
+        id: r8h4dauwgejbn
+      type: object
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: c8r2wcm255ves
+    Address:
+      title: Address
+      x-stoplight:
+        id: 240dy1kurudh6
+      type: object
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: qe0btglaiac8y
+          format: uuid
+        fiasGuid:
+          type: string
+          x-stoplight:
+            id: ze3ojiqnhcfyc
+        addressStr:
+          type: string
+          x-stoplight:
+            id: l5px2gg84htyx
+      required:
+        - id
