@@ -33,15 +33,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TicketApplication'
+              type: object
+              properties:
+                applicant:
+                  $ref: 'stoplight://resources/overrides/7Hqxdx1KaNE'
+                  x-stoplight:
+                    id: h5bcbdahegycn
     get:
-      summary: ''
+      summary: Список охотбилетов
       operationId: get-tickets
       responses:
         '200':
-          description: OK
+          $ref: '#/components/responses/listOfEntries'
       x-stoplight:
         id: yuaqqqesg7wwd
+      description: Получить пагинированный список охотбилетов
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/getListOfEntries'
   '/tickets/{id}':
     parameters:
       - schema:
@@ -110,8 +121,12 @@ components:
           type: string
           x-stoplight:
             id: xc03vtrgii37e
-          pattern: '^\s* (+7|8)|(+\d{1,4})(\d[\-\s]*{9})'
+          pattern: '^\\s* ((\\+7)|8)|(+\d{1,4})(\d[\-\s]*{9})'
           description: Номер телефона
+        ff:
+          $ref: '#/components/schemas/HunterFull'
+          x-stoplight:
+            id: zw6gx6uqj53yx
       required:
         - passportData
     Passport:
@@ -202,47 +217,52 @@ components:
       title: Ticket
       x-stoplight:
         id: kmnq1am73ny2x
-      type: object
-      properties:
-        id:
-          type: string
+      allOf:
+        - type: object
+          properties:
+            data:
+              type: object
+              x-stoplight:
+                id: 012nqrxezhg0o
+              properties:
+                issuer:
+                  type: string
+                  x-stoplight:
+                    id: 1ppk516frrxgu
+                  format: uuid
+                  description: Кем выдан
+                applicant:
+                  $ref: '#/components/schemas/Hunter'
+                  x-stoplight:
+                    id: ja1rgeuzrelxn
+                  description: Владелец
+                applicanId:
+                  type: string
+                  x-stoplight:
+                    id: 9mss2zd8psh9x
+                  format: uuid
+                issueDate:
+                  type: string
+                  x-stoplight:
+                    id: vktlm1gnoep7o
+                  format: date
+                  description: Дата выдачи
+                series:
+                  type: string
+                  x-stoplight:
+                    id: s0zs7tqzvf8w4
+                  pattern: '^\d{2}$'
+                  description: Серия
+                number:
+                  type: string
+                  x-stoplight:
+                    id: g8j3nj4voj8ln
+                  pattern: '^\d{6}$'
+                  description: Номер
+        - $ref: '#/components/schemas/EntryVersion'
           x-stoplight:
-            id: 8yt9ewqdax7gb
-          format: uuid
-        applicant:
-          $ref: '#/components/schemas/Hunter'
-          x-stoplight:
-            id: 7chm019b1jjjs
-          description: Владелец
-        issueDate:
-          type: string
-          x-stoplight:
-            id: 2rk0eyncy9r8i
-          format: date
-          description: Дата выдачи
-        series:
-          type: string
-          x-stoplight:
-            id: 3hbwc26nl83io
-          pattern: '^\d{2}$'
-          description: Серия
-        number:
-          type: string
-          x-stoplight:
-            id: 6d13rd7331o7n
-          pattern: '^\d{6}$'
-          description: Номер
-        issuer:
-          type: string
-          x-stoplight:
-            id: 1ppk516frrxgu
-          format: uuid
-          description: Кем выдан
-        applicanId:
-          type: string
-          x-stoplight:
-            id: s7bq5btp4s50z
-          format: uuid
+            id: 5ak08t5bwvaex
+      description: Схема данных охотничьего билета
     TicketApplication:
       title: TicketApplication
       x-stoplight:
@@ -254,6 +274,11 @@ components:
           x-stoplight:
             id: yv3gc3wjwvwsu
           description: Заявитель
+        applicantId:
+          type: string
+          x-stoplight:
+            id: is8fy2dr2x6un
+          format: uuid
         issuer:
           type: string
           x-stoplight:
@@ -270,10 +295,6 @@ components:
             - епгу
             - мфц
             - эл. очередь
-        '':
-          type: string
-          x-stoplight:
-            id: fcmukmqwn6tmb
       required:
         - issuer
         - source
@@ -308,3 +329,227 @@ components:
             id: l5px2gg84htyx
       required:
         - id
+    Registry:
+      title: Registry
+      x-stoplight:
+        id: 6viqerfunkn7p
+      type: object
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: wvs3olvqfb140
+          format: uuid
+        title:
+          type: string
+          x-stoplight:
+            id: 5wtyhhdk5c2m3
+      description: Абстрактный реестр (объект сервиса MDM)
+    EntryVersion:
+      title: EntryVersion
+      x-stoplight:
+        id: qh44yzf8354ed
+      type: object
+      properties:
+        versionId:
+          type: string
+          x-stoplight:
+            id: 7mxfc9lk46np6
+          format: uuid
+        entryId:
+          type: string
+          x-stoplight:
+            id: 3u7tarf076bdo
+          format: uuid
+        start:
+          type: string
+          x-stoplight:
+            id: kc5fe5a4ottn0
+          format: date-time
+        end:
+          type: string
+          x-stoplight:
+            id: jqgclp5x0gtfc
+          format: date-time
+        archived:
+          type: boolean
+          x-stoplight:
+            id: iji20bgbsda55
+        data:
+          type: object
+          x-stoplight:
+            id: jdj7fuatjr16b
+        status:
+          type: string
+          x-stoplight:
+            id: esphe6tlf90eq
+    HunterFull:
+      type: object
+      properties:
+        passport:
+          type: object
+          x-stoplight:
+            id: j73m604iuwm3w
+          properties:
+            name:
+              type: string
+            patronim:
+              type: string
+            surname:
+              type: string
+            birthday:
+              type: string
+            birthplace:
+              type: string
+            registration:
+              type: string
+            passNum:
+              type: string
+            passDate:
+              type: string
+            issuedBy:
+              type: string
+            depCode:
+              type: string
+        rejectDate:
+          type: string
+        rejectReason:
+          type: string
+        rejectNumber:
+          type: string
+        finalDecision:
+          type: string
+        departmentOfficesId:
+          type: integer
+        huntTicket:
+          type: integer
+        statusAppId:
+          type: integer
+        id:
+          type: integer
+        recieveDate:
+          type: string
+        comment:
+          type: 'null'
+        externComment:
+          type: 'null'
+        source:
+          type: string
+        region:
+          type: integer
+        udbeUser:
+          type: integer
+        mvdQuery:
+          type: integer
+        fmsQuery:
+          type: integer
+        prevIssued:
+          type: string
+        statusDate:
+          type: string
+        issued:
+          type: boolean
+        fullname:
+          type: string
+        scanDoc:
+          type: 'null'
+        applicantPhoto:
+          type: 'null'
+        huntingMinimum:
+          type: 'null'
+        representer:
+          type: 'null'
+        author:
+          type: 'null'
+        applicantAddress:
+          type: 'null'
+        applicantEmail:
+          type: 'null'
+        applicantPhone:
+          type: 'null'
+        applicantSnils:
+          type: 'null'
+        externalId:
+          type: 'null'
+        gettingPlace:
+          type: integer
+        bookId:
+          type: 'null'
+        receiveDocsPlace:
+          type: 'null'
+        dateBooking:
+          type: 'null'
+        departmentFullName:
+          type: string
+        guid:
+          type: 'null'
+        deadlineDate:
+          type: string
+        mfcOrderId:
+          type: 'null'
+        people:
+          type: integer
+        daysToEnd:
+          type: integer
+        dsr:
+          type: integer
+      title: ''
+  requestBodies:
+    getListOfEntries:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              filter:
+                type: object
+                x-stoplight:
+                  id: pbp11bepz6mbm
+              sort:
+                type: object
+                x-stoplight:
+                  id: 2y8t2lu9chwgb
+              startCursor:
+                type: string
+                x-stoplight:
+                  id: qv211ofkvz7qt
+                format: uuid
+              pageSize:
+                type: string
+                x-stoplight:
+                  id: d4yqmaj5b52xz
+              date:
+                type: string
+                x-stoplight:
+                  id: 6av540q9tfd2w
+                format: date-time
+      description: Форма запроса списка записей из реестра
+  responses:
+    listOfEntries:
+      description: Формат ответа на получение списка записей реестра
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                x-stoplight:
+                  id: afczypl1vnv6i
+                items:
+                  $ref: '#/components/schemas/EntryVersion'
+                  x-stoplight:
+                    id: e3vb9v4kytq7b
+              nextCursor:
+                type: string
+                x-stoplight:
+                  id: kkq20m2bpdtc7
+                format: uuid
+              hasMore:
+                type: boolean
+                x-stoplight:
+                  id: 7gbbs1s596mf3
+              registry:
+                $ref: '#/components/schemas/Registry'
+                x-stoplight:
+                  id: c4sf56fmfsmje
