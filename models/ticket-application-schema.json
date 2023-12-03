@@ -1,0 +1,98 @@
+{
+  "title": "ticket-application-schema",
+  "x-stoplight": {
+    "id": "p8ef6vp5pgu4y"
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "2h9rijjou3uk8"
+      },
+      "format": "uuid"
+    },
+    "applicant": {
+      "description": "UUID или ФИО заявителя"
+    },
+    "issuer": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "iuxjrr3yauw2x"
+      },
+      "description": "UUID ил наименование органа"
+    },
+    "source": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "mhal507gbaf1j"
+      }
+    },
+    "operator": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "ciyq2cyyfito8"
+      }
+    },
+    "rejection": {
+      "type": "object",
+      "x-stoplight": {
+        "id": "di30ovd448kej"
+      },
+      "properties": {
+        "date": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "lh7pjt0c8rbpf"
+          },
+          "format": "date"
+        },
+        "number": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "13nkje7b2tud6"
+          }
+        },
+        "reason": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "kl2wb94ax2v5n"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "db0dtbp07g0cm"
+      }
+    },
+    "statusMVD": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "4suc5fjowoo3z"
+      }
+    },
+    "statusFMS": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "6r1imyb4q018b"
+      }
+    },
+    "decision": {
+      "x-stoplight": {
+        "id": "vvltzq4j90ybo"
+      },
+      "enum": [
+        "Решение о выдаче",
+        "Решение об отказе"
+      ]
+    },
+    "appNum": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "nzaewdiw1h814"
+      }
+    }
+  }
+}

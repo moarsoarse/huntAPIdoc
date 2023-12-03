@@ -1,0 +1,61 @@
+{
+  "title": "ticket-schema",
+  "x-stoplight": {
+    "id": "oestzbx5nx3g8"
+  },
+  "type": "object",
+  "properties": {
+    "issuer": {
+      "type": "string",
+      "description": "Кем выдан"
+    },
+    "owner": {
+      "description": "Владелец",
+      "x-stoplight": {
+        "id": "gvahqd8tluqde"
+      },
+      "type": "string"
+    },
+    "issueDate": {
+      "type": "string",
+      "description": "Дата выдачи",
+      "format": "date"
+    },
+    "series": {
+      "type": "string",
+      "description": "Серия",
+      "pattern": "^\\d{2}$"
+    },
+    "number": {
+      "type": "string",
+      "description": "Номер",
+      "pattern": "^\\d{6}$"
+    },
+    "id": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "u7dac2batla24"
+      },
+      "format": "uuid"
+    },
+    "expired": {
+      "type": "boolean",
+      "x-stoplight": {
+        "id": "l9031bibgx1fj"
+      }
+    },
+    "regDate": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "exigia680hxmy"
+      },
+      "format": "date"
+    },
+    "operator": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "aj9xne9diiel0"
+      }
+    }
+  }
+}

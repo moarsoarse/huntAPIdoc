@@ -1,0 +1,34 @@
+{
+  "title": "entry-version",
+  "x-stoplight": {
+    "id": "mqdlyvjuz28gq"
+  },
+  "type": "object",
+  "properties": {
+          "versionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "entryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "archived": {
+            "type": "boolean"
+          },
+          "data": {
+            "type": "object"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+}
