@@ -17,38 +17,55 @@
     },
     "passport": {
       "type": "object",
+      "description": "Паспортные данные",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "Имя"
         },
         "patronim": {
-          "type": "string"
+          "type": "string",
+          "description": "Отчество"
         },
         "surname": {
-          "type": "string"
+          "type": "string",
+          "description": "Фамилия"
         },
         "birthday": {
           "type": "string",
-          "format": "date"
+          "format": "date",
+          "description": "Дата рождения"
         },
         "birthplace": {
-          "type": "string"
+          "type": "string",
+          "description": "Место рождения"
         },
         "registration": {
-          "type": "string"
-        },
-        "passNum": {
-          "type": "string"
-        },
-        "passDate": {
           "type": "string",
-          "format": "date"
+          "description": "Адрес регистрации"
+        },
+        "num": {
+          "type": "string",
+          "description": "Серия и номер паспорта",
+          "x-stoplight": {
+            "id": "0d4ooz2gukf0q"
+          }
+        },
+        "issueDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Дата выдачи паспорта",
+          "x-stoplight": {
+            "id": "0qd6kiaslvdts"
+          }
         },
         "issuedBy": {
-          "type": "string"
+          "type": "string",
+          "description": "Кем выдан"
         },
         "depCode": {
-          "type": "string"
+          "type": "string",
+          "description": "Код подразделения"
         }
       },
       "required": [
@@ -57,8 +74,8 @@
         "birthday",
         "birthplace",
         "registration",
-        "passNum",
-        "passDate",
+        "num",
+        "issueDate",
         "issuedBy"
       ]
     },
@@ -86,15 +103,12 @@
       "type": "string",
       "format": "uuid"
     },
-    "applicantPhoto": {
-      "type": "string",
-      "format": "uuid"
-    },
     "residenceAddress": {
       "x-stoplight": {
         "id": "em47xu6pxknfd"
       },
-      "type": "string"
+      "type": "string",
+      "description": "Адрес проживания"
     },
     "email": {
       "x-stoplight": {
@@ -107,55 +121,64 @@
       "type": "string",
       "x-stoplight": {
         "id": "bgjug3c47jm8r"
-      }
+      },
+      "description": "Номер телефона"
     },
     "snils": {
       "type": "string",
       "x-stoplight": {
         "id": "ew0jx36jst79x"
-      }
+      },
+      "description": "СНИЛС"
     },
     "inn": {
       "type": "string",
       "x-stoplight": {
         "id": "d303muaviicyl"
-      }
+      },
+      "description": "ИНН"
     },
     "workInfo": {
       "type": "object",
       "x-stoplight": {
         "id": "7jgabc67vurzg"
       },
+      "description": "Трудоустройство",
       "properties": {
         "position": {
           "type": "string",
           "x-stoplight": {
             "id": "4wsmvh5znlanj"
-          }
+          },
+          "description": "Должность"
         },
         "employer": {
           "type": "string",
           "x-stoplight": {
             "id": "adw80yjfzlya6"
-          }
+          },
+          "description": "Наниматель"
         },
         "employee": {
           "type": "boolean",
           "x-stoplight": {
             "id": "ip9i1muqa4rhw"
-          }
+          },
+          "description": "Рабочий (служащий)"
         },
         "retiree": {
           "type": "boolean",
           "x-stoplight": {
             "id": "nti5zjksepqm5"
-          }
+          },
+          "description": "Пенсионер"
         },
         "disabled": {
           "type": "boolean",
           "x-stoplight": {
             "id": "ozl8ltttkh40r"
-          }
+          },
+          "description": "Нетрудоспособный"
         }
       }
     },

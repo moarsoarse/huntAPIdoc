@@ -60,7 +60,30 @@ paths:
       operationId: get-tickets
       responses:
         '200':
-          $ref: '#/components/responses/listOfEntries'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      results:
+                        type: array
+                        x-stoplight:
+                          id: vjuv3em1k8tl0
+                        items:
+                          $ref: ../models/ticket-schema.json
+                          x-stoplight:
+                            id: j7n5h9mj8cuqk
+                      registry:
+                        type: string
+                        const: ticket
+                        x-stoplight:
+                          id: 0gqrvqxz30890
+                  - $ref: '#/components/responses/listOfEntries'
+                    x-stoplight:
+                      id: gfb1birxx6u5t
+              examples: {}
+          description: Список охотбилетов
       x-stoplight:
         id: yuaqqqesg7wwd
       description: Получить пагинированный список охотбилетов

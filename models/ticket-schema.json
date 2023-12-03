@@ -56,6 +56,18 @@
       "x-stoplight": {
         "id": "aj9xne9diiel0"
       }
+    },
+    "application": {
+      "$ref": "stoplight://resources/overrides/zd4mBCv95sU",
+      "x-stoplight": {
+        "id": "hsnrwdc54h5lx"
+      }
+    },
+    "status": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "wdfa538jnxlxg"
+      }
     }
   }
 }

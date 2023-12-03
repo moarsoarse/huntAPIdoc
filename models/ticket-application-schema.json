@@ -10,54 +10,67 @@
       "x-stoplight": {
         "id": "2h9rijjou3uk8"
       },
-      "format": "uuid"
+      "format": "uuid",
+      "description": "ID охотбилета!",
+      "readOnly": true
     },
     "applicant": {
-      "description": "UUID или ФИО заявителя"
+      "description": "UUID или анкета заявителя",
+      "type": [
+        "object",
+        "string"
+      ],
+      "format": "uuid"
     },
     "issuer": {
       "type": "string",
       "x-stoplight": {
         "id": "iuxjrr3yauw2x"
       },
-      "description": "UUID ил наименование органа"
+      "description": "UUID или наименование органа"
     },
     "source": {
       "type": "string",
       "x-stoplight": {
         "id": "mhal507gbaf1j"
-      }
+      },
+      "description": "Источник заявления"
     },
     "operator": {
       "type": "string",
       "x-stoplight": {
         "id": "ciyq2cyyfito8"
-      }
+      },
+      "description": "Оператор"
     },
     "rejection": {
       "type": "object",
       "x-stoplight": {
         "id": "di30ovd448kej"
       },
+      "description": "Отказ",
       "properties": {
         "date": {
           "type": "string",
           "x-stoplight": {
             "id": "lh7pjt0c8rbpf"
           },
-          "format": "date"
+          "format": "date",
+          "description": "Дата уведомления об отказе"
         },
         "number": {
           "type": "string",
           "x-stoplight": {
             "id": "13nkje7b2tud6"
-          }
+          },
+          "description": "Номер уведомления об отказе"
         },
         "reason": {
           "type": "string",
           "x-stoplight": {
             "id": "kl2wb94ax2v5n"
-          }
+          },
+          "description": "Причина отказа"
         }
       }
     },
@@ -65,19 +78,22 @@
       "type": "string",
       "x-stoplight": {
         "id": "db0dtbp07g0cm"
-      }
+      },
+      "description": "Статус заявления"
     },
     "statusMVD": {
       "type": "string",
       "x-stoplight": {
         "id": "4suc5fjowoo3z"
-      }
+      },
+      "description": "Статус МВД"
     },
     "statusFMS": {
       "type": "string",
       "x-stoplight": {
         "id": "6r1imyb4q018b"
-      }
+      },
+      "description": "Статус ФМС"
     },
     "decision": {
       "x-stoplight": {
@@ -86,13 +102,22 @@
       "enum": [
         "Решение о выдаче",
         "Решение об отказе"
-      ]
+      ],
+      "description": "Принятое решение по заявлению"
     },
     "appNum": {
       "type": "string",
       "x-stoplight": {
         "id": "nzaewdiw1h814"
-      }
+      },
+      "description": "Номер заявления"
+    },
+    "applicantPhoto": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "clx06eshj6b7g"
+      },
+      "format": "uuid"
     }
   }
 }
