@@ -4,5 +4,6 @@
     "id": "9xs494nkqnymm"
   },
   "x-internal": true,
-  "title": "HUNTER_VERSION.DATA"
+  "title": "[hunter]:HUNTER_VERSION.DATA",
+  "description": "JSONSchema колонки DATA таблицы HUNTER_VERSION сервиса hunter"
 }

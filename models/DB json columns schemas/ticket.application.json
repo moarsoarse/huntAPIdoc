@@ -3,5 +3,7 @@
   "x-stoplight": {
     "id": "4s453jcmh3o9s"
   },
-  "x-internal": true
+  "x-internal": true,
+  "title": "[hunter]:TICKET.APPLICATION",
+  "description": "JSONSchema колонки APPLICATION таблицы TICKET сервиса hunter"
 }

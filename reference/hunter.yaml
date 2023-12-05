@@ -21,7 +21,6 @@ paths:
             application/json:
               schema:
                 $ref: 'stoplight://resources/overrides/rTRS9fcmHNM'
-              examples: {}
       x-stoplight:
         id: 18l6doir5l5ea
       description: Подать заявление на выдачу охотничьего билета
