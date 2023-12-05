@@ -1,0 +1,42 @@
+{
+  "title": "ticket-app-schema-full.json",
+  "x-stoplight": {
+    "id": "qcv1ig4a1c5vg"
+  },
+  "allOf": [
+    {
+      "type": "object",
+      "x-stoplight": {
+        "id": "lf8c268cc41g4"
+      },
+      "properties": {
+        "id": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "clibzw9tea9s4"
+          },
+          "format": "uuid",
+          "description": "ID охотбилета!",
+          "readOnly": true
+        },
+        "operator": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "20zuj8ktx3re0"
+          },
+          "description": "Оператор",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    {
+      "$ref": "./ticket-app-schema-real.json",
+      "x-stoplight": {
+        "id": "7997f7w1doqkk"
+      }
+    }
+  ]
+}

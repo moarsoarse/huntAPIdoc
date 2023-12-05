@@ -1,0 +1,25 @@
+{
+  "title": "ListOfEntries",
+  "x-stoplight": {
+    "id": "jjja42t9sr88m"
+  },
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "./entry.json"
+      }
+    },
+    "nextCursor": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "hasMore": {
+      "type": "boolean"
+    },
+    "registry": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "title": "ticket-app-schema-real.json",
+  "x-stoplight": {
+    "id": "p8ef6vp5pgu4y"
+  },
+  "allOf": [
+    {
+      "type": "object",
+      "x-stoplight": {
+        "id": "5op48lf7skv1x"
+      },
+      "properties": {
+        "source": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "mhal507gbaf1j"
+          },
+          "description": "Источник заявления",
+          "format": "uuid"
+        },
+        "rejection": {
+          "type": "object",
+          "x-stoplight": {
+            "id": "di30ovd448kej"
+          },
+          "description": "Отказ",
+          "properties": {
+            "date": {
+              "type": "string",
+              "x-stoplight": {
+                "id": "lh7pjt0c8rbpf"
+              },
+              "format": "date",
+              "description": "Дата уведомления об отказе"
+            },
+            "number": {
+              "type": "string",
+              "x-stoplight": {
+                "id": "13nkje7b2tud6"
+              },
+              "description": "Номер уведомления об отказе"
+            },
+            "reason": {
+              "type": "string",
+              "x-stoplight": {
+                "id": "kl2wb94ax2v5n"
+              },
+              "description": "Причина отказа"
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "db0dtbp07g0cm"
+          },
+          "description": "Статус заявления",
+          "format": "uuid"
+        },
+        "statusMVD": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "4suc5fjowoo3z"
+          },
+          "description": "Статус МВД"
+        },
+        "statusFMS": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "6r1imyb4q018b"
+          },
+          "description": "Статус ФМС"
+        },
+        "decision": {
+          "x-stoplight": {
+            "id": "vvltzq4j90ybo"
+          },
+          "enum": [
+            "Решение о выдаче",
+            "Решение об отказе"
+          ],
+          "description": "Принятое решение по заявлению"
+        },
+        "appNum": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "nzaewdiw1h814"
+          },
+          "description": "Номер заявления"
+        }
+      }
+    },
+    {
+      "$ref": "./ticket-app-schema-min.json",
+      "x-stoplight": {
+        "id": "ds3u778r0j0q4"
+      }
+    }
+  ]
+}

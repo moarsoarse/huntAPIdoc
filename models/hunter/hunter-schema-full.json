@@ -1,0 +1,70 @@
+{
+  "title": "Минимальная схема охотника",
+  "x-stoplight": {
+    "id": "3sqe12s8ekp4c"
+  },
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "x-stoplight": {
+            "id": "pua9svb9ucxe9"
+          }
+        },
+        "fullName": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "11id1lqwu05un"
+          }
+        },
+        "huntTicket": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "pyzttd1o5p2iw"
+          },
+          "format": "uuid"
+        },
+        "prevTickets": {
+          "type": "array",
+          "x-stoplight": {
+            "id": "loehtcbdt4zqq"
+          },
+          "items": {
+            "x-stoplight": {
+              "id": "wjhwcoxm2d99l"
+            },
+            "type": "string"
+          }
+        },
+        "region": {
+          "type": [
+            "string"
+          ],
+          "x-stoplight": {
+            "id": "e4jv2uhni5urx"
+          },
+          "format": "uuid"
+        },
+        "externalId": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "t1qsduzsnprf8"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    {
+      "$ref": "./hunter-schema-min.json",
+      "x-stoplight": {
+        "id": "udreb7c56mlz8"
+      }
+    }
+  ],
+  "description": "JSONSchema колонки DATA таблицы HUNTER_VERSION сервиса hunter"
+}

@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "x-stoplight": {
+    "id": "wsc19ir95t4q8"
+  },
+  "title": "Исходная форма заявления на охотбилет",
+  "properties": {
+    "applicant": {
+      "$ref": "../hunter/hunter-schema-min.json",
+      "description": "UUID или анкета заявителя",
+      "x-stoplight": {
+        "id": "s5si6uabi5swj"
+      }
+    },
+    "issuer": {
+      "description": "UUID органа выдач",
+      "x-stoplight": {
+        "id": "9dggyhi0kuhce"
+      },
+      "type": "string",
+      "format": "uuid"
+    },
+    "applicantPhoto": {
+      "type": "string",
+      "format": "uuid",
+      "x-stoplight": {
+        "id": "iv8j70jtm1v9l"
+      }
+    },
+    "huntMinimum": {
+      "type": "boolean",
+      "x-stoplight": {
+        "id": "3qwwri1fndfik"
+      }
+    }
+  },
+  "required": [
+    "applicant",
+    "issuer",
+    "applicantPhoto",
+    "huntMinimum"
+  ]
+}

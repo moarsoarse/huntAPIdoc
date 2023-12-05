@@ -1,9 +1,0 @@
-{
-  "$ref": "stoplight://resources/overrides/zd4mBCv95sU",
-  "x-stoplight": {
-    "id": "4s453jcmh3o9s"
-  },
-  "x-internal": true,
-  "title": "[hunter]:TICKET.APPLICATION",
-  "description": "JSONSchema колонки APPLICATION таблицы TICKET сервиса hunter"
-}

@@ -15,12 +15,7 @@ paths:
       operationId: post-ticket
       responses:
         '201':
-          description: Created
-          headers: {}
-          content:
-            application/json:
-              schema:
-                $ref: 'stoplight://resources/overrides/rTRS9fcmHNM'
+          $ref: '#/components/responses/ticketApp'
       x-stoplight:
         id: 18l6doir5l5ea
       description: Подать заявление на выдачу охотничьего билета
@@ -28,69 +23,18 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                applicant:
-                  x-stoplight:
-                    id: h5bcbdahegycn
-                  oneOf:
-                    - $ref: 'stoplight://resources/overrides/7Hqxdx1KaNE'
-                      x-stoplight:
-                        id: d7r2j5pfajm57
-                    - type: string
-                      x-stoplight:
-                        id: 3jubg4qzv87rn
-                      format: uuid
-                issueOffice:
-                  type: string
-                  x-stoplight:
-                    id: cgf2fjg898ma1
-                  format: uuid
-                huntMinimum:
-                  type: boolean
-                  x-stoplight:
-                    id: ol4nf4j42qbko
-              required:
-                - applicant
-                - issueOffice
-                - huntMinimum
+              $ref: ../models/ticket/ticket-app-schema-min.json
     get:
       summary: Список охотбилетов
       operationId: get-tickets
       responses:
         '200':
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - type: object
-                    properties:
-                      results:
-                        type: array
-                        x-stoplight:
-                          id: vjuv3em1k8tl0
-                        items:
-                          $ref: ../models/ticket-schema.json
-                          x-stoplight:
-                            id: j7n5h9mj8cuqk
-                      registry:
-                        type: string
-                        const: ticket
-                        x-stoplight:
-                          id: 0gqrvqxz30890
-                  - $ref: '#/components/responses/listOfEntries'
-                    x-stoplight:
-                      id: gfb1birxx6u5t
-              examples: {}
-          description: Список охотбилетов
+          $ref: '#/components/responses/listOfTickets'
       x-stoplight:
         id: yuaqqqesg7wwd
       description: Получить пагинированный список охотбилетов
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/requestBodies/getListOfEntries'
+        $ref: '#/components/requestBodies/getListOfEntries'
   '/tickets/{id}':
     parameters:
       - schema:
@@ -104,12 +48,7 @@ paths:
       tags: []
       responses:
         '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/ticket-schema.json
-              examples: {}
+          $ref: '#/components/responses/ticket'
       operationId: get-ticket-byid
       x-stoplight:
         id: nkv23tapfiv7c
@@ -140,48 +79,43 @@ components:
                 type: string
                 x-stoplight:
                   id: d4yqmaj5b52xz
+              date:
+                type: string
+                x-stoplight:
+                  id: bxoxec607a2nz
+                format: uuid
       description: Форма запроса списка записей из реестра
-    getListOfVersionedEntries:
+  responses:
+    listOfTickets:
+      description: |
+        Формат ответа на получение списка билетов
       content:
         application/json:
           schema:
             allOf:
-              - $ref: '#/components/requestBodies/getListOfEntries'
+              - $ref: ../models/common/listOfEntries.json
               - type: object
                 x-stoplight:
-                  id: b2a98kxicp9gl
+                  id: bkzrj0592v5sv
                 properties:
-                  date:
-                    type: string
+                  results:
+                    type: array
                     x-stoplight:
-                      id: d4d8iskr8kwwm
-                    format: date-time
-  responses:
-    listOfEntries:
-      description: Формат ответа на получение списка записей реестра
+                      id: ulfq8apx51oo0
+                    items:
+                      $ref: ../models/ticket/ticket-schema.json
+                      x-stoplight:
+                        id: t00cwv2d8u8t7
+    ticket:
+      description: Форма охотбилета
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              results:
-                type: array
-                x-stoplight:
-                  id: afczypl1vnv6i
-                items:
-                  $ref: 'stoplight://resources/overrides/hM6pcYZZMrM'
-                  x-stoplight:
-                    id: e3vb9v4kytq7b
-              nextCursor:
-                type: string
-                x-stoplight:
-                  id: kkq20m2bpdtc7
-                format: uuid
-              hasMore:
-                type: boolean
-                x-stoplight:
-                  id: 7gbbs1s596mf3
-              registry:
-                x-stoplight:
-                  id: c4sf56fmfsmje
-                type: string
+            $ref: ../models/ticket/ticket-schema.json
+    ticketApp:
+      description: |
+        Форма заявки на охотбилет
+      content:
+        application/json:
+          schema:
+            $ref: ../models/ticket/ticket-app-schema-real.json

@@ -1,9 +1,0 @@
-{
-  "$ref": "stoplight://resources/overrides/7Hqxdx1KaNE",
-  "x-stoplight": {
-    "id": "9xs494nkqnymm"
-  },
-  "x-internal": true,
-  "title": "[hunter]:HUNTER_VERSION.DATA",
-  "description": "JSONSchema колонки DATA таблицы HUNTER_VERSION сервиса hunter"
-}

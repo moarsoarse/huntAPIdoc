@@ -3,34 +3,63 @@
   "x-stoplight": {
     "id": "mqdlyvjuz28gq"
   },
-  "type": "object",
-  "properties": {
-    "versionId": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "entryId": {
-      "type": "string",
-      "format": "uuid"
-    },
-    "start": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "end": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "archived": {
-      "type": "boolean"
-    },
-    "data": {
-      "type": "object"
-    },
-    "status": {
-      "type": "string"
-    }
-  },
   "description": "Общая схема записей версионируемого реестра",
-  "x-internal": true
+  "x-internal": true,
+  "allOf": [
+    {
+      "properties": {
+        "version": {
+          "type": "object",
+          "x-stoplight": {
+            "id": "w6m17wno3t73x"
+          },
+          "properties": {
+            "versionId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "entryId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "start": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "end": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "archived": {
+              "type": "boolean"
+            },
+            "data": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    {
+      "x-stoplight": {
+        "id": "wmcptlwqxvyjz"
+      },
+      "properties": {
+        "id": {
+          "type": "string",
+          "x-stoplight": {
+            "id": "25i7uws7q2c9o"
+          },
+          "format": "uuid"
+        },
+        "status": {
+          "type": "string"
+        },
+        "archived": {
+          "type": "boolean"
+        }
+      }
+    }
+  ],
+  "type": "object"
 }

@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "title": "entry",
+  "description": "Общая схема записей неверсионируемого реестра",
+  "x-internal": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "x-stoplight": {
+        "id": "4d93budvqfsid"
+      }
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "data": {
+      "type": "object"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

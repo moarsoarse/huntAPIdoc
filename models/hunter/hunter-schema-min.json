@@ -1,0 +1,107 @@
+{
+  "title": "Минимальная схема охотника",
+  "x-stoplight": {
+    "id": "sirdo36njgowr"
+  },
+  "description": "Подходит как макса для UI-форм создания",
+  "type": "object",
+  "properties": {
+    "passport": {
+      "$ref": "./passport.json",
+      "description": "Паспортные данные",
+      "x-stoplight": {
+        "id": "7vllqv56pf41s"
+      }
+    },
+    
+    "scanDoc": {
+      "type": "string",
+      "format": "uuid",
+      "x-stoplight": {
+        "id": "yx2n9483vkmkf"
+      }
+    },
+    "residenceAddress": {
+      "type": "string",
+      "description": "Адрес проживания",
+      "x-stoplight": {
+        "id": "k01uzwvepeqgx"
+      }
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "x-stoplight": {
+        "id": "rlr86u77db5vo"
+      }
+    },
+    "phone": {
+      "type": "string",
+      "description": "Номер телефона",
+      "x-stoplight": {
+        "id": "clcv1yws4sfnp"
+      }
+    },
+    "snils": {
+      "type": "string",
+      "description": "СНИЛС",
+      "x-stoplight": {
+        "id": "ygnorsgpnes80"
+      }
+    },
+    "inn": {
+      "type": "string",
+      "description": "ИНН",
+      "x-stoplight": {
+        "id": "4wk41v19kt18j"
+      }
+    },
+    "workInfo": {
+      "type": "object",
+      "description": "Трудоустройство",
+      "x-stoplight": {
+        "id": "w2g827c4e9uei"
+      },
+      "properties": {
+        "position": {
+          "type": "string",
+          "description": "Должность",
+          "x-stoplight": {
+            "id": "1p5pm7iajfhtv"
+          }
+        },
+        "employer": {
+          "type": "string",
+          "description": "Наниматель",
+          "x-stoplight": {
+            "id": "75a0epve71ylg"
+          }
+        },
+        "employee": {
+          "type": "boolean",
+          "description": "Рабочий (служащий)",
+          "x-stoplight": {
+            "id": "48psv896pjmgg"
+          }
+        },
+        "retiree": {
+          "type": "boolean",
+          "description": "Пенсионер",
+          "x-stoplight": {
+            "id": "udctzlemoxrl9"
+          }
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Нетрудоспособный",
+          "x-stoplight": {
+            "id": "19sbvovelwi2a"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "passport"
+  ]
+}

@@ -6,30 +6,41 @@
   "type": "object",
   "properties": {
     "issuer": {
+      "description": "Кем выдан",
+      "x-stoplight": {
+        "id": "uzfs2lx8doaqa"
+      },
       "type": "string",
-      "description": "Кем выдан"
+      "format": "uuid"
     },
     "owner": {
+      "$ref": "../hunter/hunter-schema-full.json",
       "description": "Владелец",
       "x-stoplight": {
         "id": "gvahqd8tluqde"
-      },
-      "type": "string"
+      }
     },
     "issueDate": {
       "type": "string",
       "description": "Дата выдачи",
-      "format": "date"
+      "format": "date",
+      "x-stoplight": {
+        "id": "bb3wl0c6r5cey"
+      }
     },
     "series": {
       "type": "string",
       "description": "Серия",
-      "pattern": "^\\d{2}$"
+      "x-stoplight": {
+        "id": "d88a89cvt0kmq"
+      }
     },
     "number": {
       "type": "string",
       "description": "Номер",
-      "pattern": "^\\d{6}$"
+      "x-stoplight": {
+        "id": "6bzgpk2hf9a3c"
+      }
     },
     "id": {
       "type": "string",
@@ -55,10 +66,11 @@
       "type": "string",
       "x-stoplight": {
         "id": "aj9xne9diiel0"
-      }
+      },
+      "format": "uuid"
     },
     "application": {
-      "$ref": "stoplight://resources/overrides/zd4mBCv95sU",
+      "$ref": "./ticket-app-schema-real.json",
       "x-stoplight": {
         "id": "hsnrwdc54h5lx"
       }
@@ -67,7 +79,8 @@
       "type": "string",
       "x-stoplight": {
         "id": "wdfa538jnxlxg"
-      }
+      },
+      "format": "uuid"
     }
   }
 }

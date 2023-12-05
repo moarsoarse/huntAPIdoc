@@ -1,0 +1,91 @@
+{
+  "title": "passport",
+  "x-stoplight": {
+    "id": "does4equ0himj"
+  },
+  "type": "object",
+  "properties": {
+        "name": {
+          "type": "string",
+          "description": "Имя",
+          "x-stoplight": {
+            "id": "1lazz4wd8zwo8"
+          }
+        },
+        "patronim": {
+          "type": "string",
+          "description": "Отчество",
+          "x-stoplight": {
+            "id": "4p5wnrzo58uia"
+          }
+        },
+        "surname": {
+          "type": "string",
+          "description": "Фамилия",
+          "x-stoplight": {
+            "id": "onw0qbc4guz6k"
+          }
+        },
+        "birthday": {
+          "type": "string",
+          "description": "Дата рождения",
+          "format": "date",
+          "x-stoplight": {
+            "id": "btjlty9k8s934"
+          }
+        },
+        "birthplace": {
+          "type": "string",
+          "description": "Место рождения",
+          "x-stoplight": {
+            "id": "tgp5tbwyhemya"
+          }
+        },
+        "registration": {
+          "type": "string",
+          "description": "Адрес регистрации",
+          "x-stoplight": {
+            "id": "l1hxf369yslyb"
+          }
+        },
+        "num": {
+          "type": "string",
+          "description": "Серия и номер паспорта",
+          "x-stoplight": {
+            "id": "3agop7clcrj21"
+          }
+        },
+        "issueDate": {
+          "type": "string",
+          "description": "Дата выдачи паспорта",
+          "format": "date",
+          "x-stoplight": {
+            "id": "lpj0f9e6up3qp"
+          }
+        },
+        "issuedBy": {
+          "type": "string",
+          "description": "Кем выдан",
+          "x-stoplight": {
+            "id": "j190gu2b58mz4"
+          }
+        },
+        "depCode": {
+          "type": "string",
+          "description": "Код подразделения",
+          "x-stoplight": {
+            "id": "a6ir0rrnyf8eb"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "surname",
+        "birthday",
+        "birthplace",
+        "registration",
+        "num",
+        "issueDate",
+        "issuedBy"
+      ]
+}
