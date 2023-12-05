@@ -15,12 +15,7 @@
       "readOnly": true
     },
     "applicant": {
-      "description": "UUID или анкета заявителя",
-      "type": [
-        "object",
-        "string"
-      ],
-      "format": "uuid"
+      "description": "UUID или анкета заявителя"
     },
     "issuer": {
       "type": "string",

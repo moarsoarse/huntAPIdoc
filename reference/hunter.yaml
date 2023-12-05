@@ -185,4 +185,3 @@ components:
                 x-stoplight:
                   id: c4sf56fmfsmje
                 type: string
-          examples: {}
